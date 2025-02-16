@@ -61,6 +61,7 @@
 		"@langchain/langgraph": "^0.2.39",
 		"@pythnetwork/client": "^2.22.0",
 		"@pythnetwork/pyth-aptos-js": "^1.4.2",
+		"@merkletrade/ts-sdk": "^1.0.0",
 		"axios": "^1.7.9",
 		"bs58": "^6.0.0",
 		"inquirer": "^12.3.2",

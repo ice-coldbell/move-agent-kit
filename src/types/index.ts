@@ -41,6 +41,10 @@ export type ToolsNameList =
 	| "echelon_withdraw_token"
 	| "echelon_borrow_token"
 	| "echelon_repay_token"
+	| "merkle_trade_place_market_order"
+	| "merkle_trade_place_limit_order"
+	| "merkle_trade_close_position"
+	| "merkle_trade_get_position"
 
 export type SignedTransactionResponse = {
 	senderAuthenticator?: AccountAuthenticator

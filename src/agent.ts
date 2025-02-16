@@ -30,7 +30,21 @@ import {
 	repayAriesToken,
 	withdrawAriesToken,
 } from "./tools/aries"
+import {
+	borrowTokenWithEchelon,
+	lendTokenWithEchelon,
+	repayTokenWithEchelon,
+	withdrawTokenWithEchelon,
+} from "./tools/echelon"
+import { stakeTokenWithEcho, unstakeTokenWithEcho } from "./tools/echo"
 import { addLiquidity, createPool, removeLiquidity, swap } from "./tools/liquidswap"
+import {
+	closePositionWithMerkleTrade,
+	getPositionsWithMerkleTrade,
+	placeLimitOrderWithMerkleTrade,
+	placeMarketOrderWithMerkleTrade,
+} from "./tools/merkletrade"
+import { createImage } from "./tools/openai"
 import { swapWithPanora } from "./tools/panora"
 import {
 	addLiquidityWithThala,
@@ -40,15 +54,6 @@ import {
 	stakeTokenWithThala,
 	unstakeAPTWithThala,
 } from "./tools/thala"
-
-import {
-	borrowTokenWithEchelon,
-	lendTokenWithEchelon,
-	repayTokenWithEchelon,
-	withdrawTokenWithEchelon,
-} from "./tools/echelon"
-import { stakeTokenWithEcho, unstakeTokenWithEcho } from "./tools/echo"
-import { createImage } from "./tools/openai"
 import { getTokenByTokenName } from "./utils/get-pool-address-by-token-name"
 
 export class AgentRuntime {
@@ -249,5 +254,29 @@ export class AgentRuntime {
 
 	borrowTokenWithEchelon(mintType: MoveStructId, amount: number, poolAddress: string, fungibleAsset: boolean) {
 		return borrowTokenWithEchelon(this, mintType, amount, poolAddress, fungibleAsset)
+	}
+
+	// MerkleTrade
+
+	placeMarketOrderWithMerkleTrade(pair: string, isLong: boolean, sizeDelta: number, collateralDelta: number) {
+		return placeMarketOrderWithMerkleTrade(this, pair, isLong, sizeDelta, collateralDelta)
+	}
+
+	placeLimitOrderWithMerkleTrade(
+		pair: string,
+		isLong: boolean,
+		sizeDelta: number,
+		collateralDelta: number,
+		price: number
+	) {
+		return placeLimitOrderWithMerkleTrade(this, pair, isLong, sizeDelta, collateralDelta, price)
+	}
+
+	closePositionWithMerkleTrade(pair: string, isLong: boolean) {
+		return closePositionWithMerkleTrade(this, pair, isLong)
+	}
+
+	getPositionsWithMerkleTrade() {
+		return getPositionsWithMerkleTrade(this)
 	}
 }
