@@ -36,6 +36,12 @@ import {
 	EchelonWithdrawTokenTool,
 } from "./echelon"
 import { EchoStakeTokenTool, EchoUnstakeTokenTool } from "./echo"
+import {
+	MerkleTradeClosePositionTool,
+	MerkleTradeGetPositionTool,
+	MerkleTradePlaceLimitOrderTool,
+	MerkleTradePlaceMarketOrderTool,
+} from "./merkletrade"
 import { OpenAICreateImageTool } from "./openai"
 import { PanoraSwapTool } from "./panora"
 import {
@@ -102,6 +108,11 @@ export const createAptosTools = (agent: AgentRuntime, config: { filter?: ToolsNa
 		new EchelonWithdrawTokenTool(agent),
 		new EchelonRepayTokenTool(agent),
 		new EchelonBorrowTokenTool(agent),
+		// Merkletrade Tools
+		new MerkleTradeClosePositionTool(agent),
+		new MerkleTradeGetPositionTool(agent),
+		new MerkleTradePlaceLimitOrderTool(agent),
+		new MerkleTradePlaceMarketOrderTool(agent),
 	]
 
 	return config.filter ? tools.filter((tool) => config?.filter?.includes(tool.name as ToolsNameList)) : tools
